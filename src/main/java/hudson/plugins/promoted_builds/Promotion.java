@@ -102,6 +102,8 @@ public class Promotion extends AbstractBuild<PromotionProcess,Promotion>
         e.put("PROMOTED_ID", target.getId());
         e.put("PROMOTED_DISPLAY_NAME", target.getDisplayName());
         e.put("PROMOTED_USER_NAME", getUserName());
+        java.util.Date now = new java.util.Date(); 
+        e.put("CURRENT_DATE", new java.text.SimpleDateFormat("yyyy-MM-dd").format(now));
 	 EnvVars envScm = new EnvVars();
         target.getProject().getScm().buildEnvVars( target, envScm );
         for ( Entry<String, String> entry : envScm.entrySet() )
